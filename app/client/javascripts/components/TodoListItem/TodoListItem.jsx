@@ -19,29 +19,39 @@ export default class TodoListItem extends React.Component {
     super(props);
     this.updateTodo = this.updateTodo.bind(this);
     this.removeTodo = this.removeTodo.bind(this);
+    this.state = {closed: ''};
+
   }
 
   updateTodo(e) {
     e.preventDefault();
     e.stopPropagation();
+    this.setState({closed: 'closed'});
 
     let timestamp = this.props.todo.completed_at ? null : moment();
     let payload = {todo: {completed_at: timestamp}};
 
-    this.props.updateTodo(this.endpoint, payload)
+    setTimeout(() =>
+        this.props.updateTodo(this.endpoint, payload),
+      300
+    )
   }
 
   removeTodo(e) {
     e.preventDefault();
     e.stopPropagation();
+    this.setState({closed: 'closed'});
 
-    this.props.removeTodo(this.endpoint)
+    setTimeout(() =>
+        this.props.removeTodo(this.endpoint),
+      300
+    )
   }
 
   render() {
     return (
       <li
-        className={`TodoListItem`}
+        className={`TodoListItem ${this.state.closed}`}
       >
         <span className='name'>
           {this.props.todo.name}
