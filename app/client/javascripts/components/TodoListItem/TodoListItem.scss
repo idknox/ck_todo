@@ -10,7 +10,7 @@
 
   .name,
   .completed {
-    width: 80%;
+    width: 55%;
   }
 
   .name {
@@ -28,5 +28,12 @@
 
   .fa {
     font-size: $font-size-20;
+  }
+
+  @media($S) {
+    .name,
+    .completed {
+      width: 80%;
+    }
   }
 }
