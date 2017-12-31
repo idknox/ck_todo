@@ -8,6 +8,10 @@ export default class ApiService {
 
   apiPrefex = 'api';
 
+  constructor(errorCallback) {
+    this.errorCallback = errorCallback;
+  }
+
   apiPath(endpoint) {
     return `${this.apiPrefex}/${endpoint}`
   }
@@ -18,6 +22,7 @@ export default class ApiService {
         callback(response.data)
       })
       .catch(error => {
+        this.errorCallback()
       });
   }
 
@@ -28,6 +33,7 @@ export default class ApiService {
         callback(response.data);
       })
       .catch(error => {
+        this.errorCallback()
       });
   }
 
@@ -38,6 +44,7 @@ export default class ApiService {
         callback(response.data)
       })
       .catch(error => {
+        this.errorCallback()
       });
   }
 
@@ -48,6 +55,7 @@ export default class ApiService {
         callback(response.data, 'remove')
       })
       .catch(error => {
+        this.errorCallback()
       });
   }
 }

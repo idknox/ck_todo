@@ -7,7 +7,7 @@ import TodoList from '../../components/TodoList/TodoList';
 import './TodoApp.scss';
 
 export default class TodoApp extends React.Component {
-  api = new ApiService();
+  api = new ApiService(this.displayError.bind(this));
 
   constructor(props) {
     super(props);
@@ -27,6 +27,10 @@ export default class TodoApp extends React.Component {
 
   componentDidMount() {
     this.fetchTodos()
+  }
+
+  displayError() {
+    this.setState({hasError: true})
   }
 
   activateView(view) {
@@ -95,8 +99,13 @@ export default class TodoApp extends React.Component {
         <TodoForm
           addTodo={this.addTodo.bind(this)}
           activateView={this.activateView}
-
+          displayError={this.displayError.bind(this)}
         />
+        {this.state.hasError &&
+        <div className="error">
+          We encountered an error. Please refresh the page or try again later.
+        </div>
+        }
         <div className='box'>
           <Tabs
             options={['To Do', 'Completed']}

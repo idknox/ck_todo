@@ -9,9 +9,10 @@ export default class TodoForm extends React.Component {
   static propTypes = {
     addTodo: PropTypes.func.isRequired,
     activateView: PropTypes.func.isRequired,
+    displayError: PropTypes.func
   };
 
-  api = new ApiService();
+  api = new ApiService(this.props.displayError);
   endpoint = 'todos.json';
 
   constructor(props) {

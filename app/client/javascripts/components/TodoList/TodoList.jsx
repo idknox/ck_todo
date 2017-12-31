@@ -17,7 +17,6 @@ export default class TodoList extends React.Component {
   render() {
     return (
       <div className={`TodoList box ${this.props.active ? 'active' : ''}`}>
-        <div>{this.props.title}</div>
         {this.props.todos.size === 0 ? (
           <div className="no-results">
             {this.props.emptyLabel}
