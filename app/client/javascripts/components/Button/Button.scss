@@ -7,9 +7,7 @@
   background-color: transparent;
   position: relative;
 
-  &:hover,
-  &:active,
-  &:focus {
+  &:hover {
     opacity: 0.8;
     outline: none;
 
