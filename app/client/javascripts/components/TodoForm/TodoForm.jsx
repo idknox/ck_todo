@@ -63,7 +63,7 @@ export default class TodoForm extends React.Component {
           type="text"
           ref={input => this.nameInput = input}
           value={this.state.todo.name}
-          placeholder='Enter a To-do description'
+          placeholder='Enter a Todo description'
           onChange={this.setTodo}
           required='true'
         />
