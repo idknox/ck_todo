@@ -20,4 +20,14 @@ export default class ApiService {
       .catch(error => {
       });
   }
+
+  post(endpoint, payload, callback) {
+    axios
+      .post(this.apiPath(endpoint), payload, this.requestConfig)
+      .then(response => {
+        callback(response.data);
+      })
+      .catch(error => {
+      });
+  }
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import Immutable from 'immutable';
 import ApiService from '../../services/ApiService';
+import TodoForm from '../../components/TodoForm/TodoForm';
 import './TodoApp.scss';
 
 export default class TodoApp extends React.Component {
@@ -29,7 +30,12 @@ export default class TodoApp extends React.Component {
     this.setState({
       todos: Immutable.List(todos)
     });
+  }
 
+  addTodo(todo) {
+    this.setState({
+      todos: this.state.todos.push(todo)
+    })
   }
 
   incompleteTodos() {
@@ -50,7 +56,10 @@ export default class TodoApp extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='TodoApp'>
+        <TodoForm
+          addTodo={this.addTodo.bind(this)}
+        />
         <div>
           Complete
           {this.completeTodos().map(todo =>
