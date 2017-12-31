@@ -11,7 +11,7 @@ export default class FontAwesomeIcon extends React.Component {
   render() {
     return (
       <i
-        className={`FontAwesomeIcon fa fa-${this.props.name}`}
+        className={`FontAwesomeIcon fa fa-${this.props.name} ${this.props.className}`}
         />
     )
   }

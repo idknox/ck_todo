@@ -1,5 +1,4 @@
 .TodoApp {
-  @include flexbox(row);
   max-width: $breakpoint-s;
   margin: 80px auto;
 }

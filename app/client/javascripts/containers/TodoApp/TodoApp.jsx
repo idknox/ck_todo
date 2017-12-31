@@ -1,9 +1,9 @@
 import React from 'react';
 import Immutable from 'immutable';
 import ApiService from '../../services/ApiService';
+import Tabs from '../../components/Tabs/Tabs';
 import TodoForm from '../../components/TodoForm/TodoForm';
 import TodoList from '../../components/TodoList/TodoList';
-
 import './TodoApp.scss';
 
 export default class TodoApp extends React.Component {
@@ -12,20 +12,25 @@ export default class TodoApp extends React.Component {
   constructor(props) {
     super(props);
     this.setInitialState();
+    this.activateView = this.activateView.bind(this);
     this.removeTodo = this.removeTodo.bind(this);
     this.updateTodo = this.updateTodo.bind(this);
     this.updateList = this.updateList.bind(this);
-
   }
 
   setInitialState() {
     this.state = {
-      todos: Immutable.List()
+      todos: Immutable.List(),
+      activeView: 'To Do'
     };
   }
 
   componentDidMount() {
     this.fetchTodos()
+  }
+
+  activateView(view) {
+    this.setState({activeView: view})
   }
 
   fetchTodos() {
@@ -89,23 +94,30 @@ export default class TodoApp extends React.Component {
       <div className='TodoApp'>
         <TodoForm
           addTodo={this.addTodo.bind(this)}
+          activateView={this.activateView}
+
         />
-        <TodoList
-          todos={this.incompleteTodos()}
-          emptyLabel='No incomplete items exist yet.'
-          updateTodo={this.updateTodo}
-          removeTodo={this.removeTodo}
-          active={this.state.activeView === 'To Do'}
-          title='To Do'
-        />
-        <TodoList
-          emptyLabel='No complete items exist yet.'
-          todos={this.completeTodos()}
-          updateTodo={this.updateTodo}
-          removeTodo={this.removeTodo}
-          active={this.state.activeView === 'Completed'}
-          title='Complete'
-        />
+        <div className='box'>
+          <Tabs
+            options={['To Do', 'Completed']}
+            activateView={this.activateView}
+            activeView={this.state.activeView}
+          />
+          <TodoList
+            todos={this.incompleteTodos()}
+            emptyLabel='No incomplete items exist yet.'
+            updateTodo={this.updateTodo}
+            removeTodo={this.removeTodo}
+            active={this.state.activeView === 'To Do'}
+          />
+          <TodoList
+            emptyLabel='No complete items exist yet.'
+            todos={this.completeTodos()}
+            updateTodo={this.updateTodo}
+            removeTodo={this.removeTodo}
+            active={this.state.activeView === 'Completed'}
+          />
+        </div>
       </div>
     )
   }

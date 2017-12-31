@@ -1,0 +1,19 @@
+.Tabs {
+  @include flexbox(row);
+  padding: 10px 30px;
+
+  .Tab {
+    padding: 5px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    cursor: pointer;
+
+    &:first-child {
+      margin-right: 5px;
+    }
+
+    &.active {
+      border-bottom: 2px solid $grey-dark;
+    }
+  }
+}

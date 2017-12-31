@@ -1,3 +1,52 @@
 .Button {
+  border-radius: 20px;
+  border-color: transparent;
+  font-size: $font-size-base;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: transparent;
+  position: relative;
 
+  &:hover,
+  &:active,
+  &:focus {
+    opacity: 0.8;
+    outline: none;
+
+    &:before {
+      font-size: $font-size-14;
+      margin-right: 10px;
+      top: 2px;
+      right: 30px;
+      position: absolute;
+    }
+
+    &.complete {
+      color: $green;
+
+      &:before {
+        content: 'Complete';
+        color: $green;
+      }
+    }
+
+    &.reopen {
+      color: $grey;
+
+      &:before {
+        content: 'Reopen';
+        color: $grey;
+
+      }
+    }
+  }
+
+  &[type="submit"] {
+    padding: 8px 12px;
+    color: $white;
+  }
+
+  &.blue {
+    background-color: $blue;
+  }
 }

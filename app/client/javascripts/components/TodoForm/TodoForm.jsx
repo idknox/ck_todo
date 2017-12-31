@@ -1,14 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ApiService from '../../services/ApiService';
+import Button from '../Button/Button';
+
 import './TodoForm.scss';
 
 export default class TodoForm extends React.Component {
   static propTypes = {
     addTodo: PropTypes.func.isRequired,
+    activateView: PropTypes.func.isRequired,
   };
 
-  api = new ApiService(this.props.displayError);
+  api = new ApiService();
   endpoint = 'todos.json';
 
   constructor(props) {
@@ -46,14 +49,16 @@ export default class TodoForm extends React.Component {
       todo: {name: ''}
     });
     this.nameInput.focus();
+    this.props.activateView('To Do')
   }
 
   render() {
     return (
-      <form className="TodoForm"
+      <form className="TodoForm box"
             onSubmit={this.createTodo}
       >
         <input
+          className="form-control"
           type="text"
           ref={input => this.nameInput = input}
           value={this.state.todo.name}
@@ -61,9 +66,11 @@ export default class TodoForm extends React.Component {
           onChange={this.setTodo}
           required='true'
         />
-        <button
-        type='submit'
-        >Create</button>
+        <Button
+          type="submit"
+          label="Add Todo Item"
+          className="blue"
+        />
       </form>
     )
   }

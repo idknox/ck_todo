@@ -9,12 +9,14 @@ export default class TodoList extends React.Component {
     todos: PropTypes.instanceOf(Immutable.List).isRequired,
     emptyLabel: PropTypes.string.isRequired,
     updateTodo: PropTypes.func.isRequired,
-    removeTodo: PropTypes.func.isRequired
+    removeTodo: PropTypes.func.isRequired,
+    active: PropTypes.bool.isRequired
+
   };
 
   render() {
     return (
-      <div className={`TodoList`}>
+      <div className={`TodoList box ${this.props.active ? 'active' : ''}`}>
         <div>{this.props.title}</div>
         {this.props.todos.size === 0 ? (
           <div className="no-results">

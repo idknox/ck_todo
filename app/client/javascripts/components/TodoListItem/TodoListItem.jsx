@@ -48,13 +48,15 @@ export default class TodoListItem extends React.Component {
         </span>
 
         {this.props.todo.completed_at ? (
-          <div>
+          <div className='completed'>
             {`Completed ${this.formattedCreation}`}
           </div>
         ) : (
           <Button
             type="button"
             onClick={this.updateTodo}
+            className='complete grey'
+
             label={
               <FontAwesomeIcon
                 name='check'

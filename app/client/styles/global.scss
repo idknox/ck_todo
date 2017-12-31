@@ -90,3 +90,48 @@ dl {
   margin: 0;
   padding: 0;
 }
+
+.heading {
+  font-size: 16px;
+  color: $grey-dark;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.form-control {
+  padding: 8px 12px;
+  font-size: 18px;
+  border: 1px solid $grey;
+  border-radius: 4px;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.grey-dark {
+  color: $grey-dark;
+}
+
+.grey {
+  color: $grey;
+}
+
+.green {
+  color: $green;
+}
+
+.blue-light {
+  color: $blue-light;
+}
+
+.fa {
+  cursor: pointer;
+}
+
+.box {
+  margin-bottom: 10px;
+  background-color: $white;
+  box-shadow: 1px 2px 2px 0 rgba(0, 0, 0, 0.03);
+}

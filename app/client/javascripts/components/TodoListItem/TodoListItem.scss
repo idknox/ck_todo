@@ -1,3 +1,32 @@
 .TodoListItem {
+  @include flexbox(row, space-between, flex-start, wrap);
+  padding: 20px 30px;
+  background-color: $white;
+  cursor: pointer;
 
+  &:not(:last-child) {
+    border-bottom: 1px solid $grey-light;
+  }
+
+  .name,
+  .completed {
+    width: 80%;
+  }
+
+  .name {
+    font-weight: bold;
+  }
+
+  .completed {
+    font-size: $font-size-14;
+
+    span {
+      font-weight: bold;
+      margin-right: 5px;
+    }
+  }
+
+  .fa {
+    font-size: $font-size-20;
+  }
 }
