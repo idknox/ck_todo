@@ -1,5 +1,6 @@
 import ReactOnRails from 'react-on-rails';
-import TodoApp from './containers/TodoApp';
+import '../styles/global.scss';
+import TodoApp from './containers/TodoApp/TodoApp';
 
 ReactOnRails.register({
   TodoApp,
