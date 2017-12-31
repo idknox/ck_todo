@@ -30,4 +30,24 @@ export default class ApiService {
       .catch(error => {
       });
   }
+
+  patch(endpoint, payload, callback) {
+    axios
+      .patch(this.apiPath(endpoint), payload, this.requestConfig)
+      .then(response => {
+        callback(response.data)
+      })
+      .catch(error => {
+      });
+  }
+
+  destroy(endpoint, callback) {
+    axios
+      .delete(this.apiPath(endpoint), this.requestConfig)
+      .then(response => {
+        callback(response.data, 'remove')
+      })
+      .catch(error => {
+      });
+  }
 }

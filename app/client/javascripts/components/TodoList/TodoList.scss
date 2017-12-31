@@ -1,0 +1,20 @@
+.TodoList {
+  @include flexbox(column, flex-start, center);
+  width: 100%;
+  padding: 0;
+  z-index: 1;
+
+
+  .no-results {
+    padding: 20px 30px;
+    font-weight: bold;
+  }
+
+  ul {
+    width: 100%;
+  }
+
+  .heading {
+    font-size: $font-size-24;
+  }
+}
