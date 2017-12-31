@@ -17,6 +17,7 @@ gem 'turbolinks', '~> 5'
 
 gem 'responders'
 gem 'active_model_serializers'
+gem 'react_on_rails', '10.0.2'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
