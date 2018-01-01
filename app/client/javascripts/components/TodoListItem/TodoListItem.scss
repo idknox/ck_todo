@@ -2,7 +2,6 @@
   @include flexbox(row, space-between, flex-start, wrap);
   padding: 20px 30px;
   background-color: $white;
-  cursor: pointer;
 
   &:hover {
     transition: transform 200ms ease-out, box-shadow 250ms ease;
